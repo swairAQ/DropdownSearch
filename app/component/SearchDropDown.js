@@ -16,28 +16,64 @@ export default function SearchDropDown(props) {
             position: 'absolute',
             top: '6.2%',
             left: 0, right: 0, bottom: 0,
-            backgroundColor: '#84DCC6',
-            paddingTop: 10,
-            borderTopLeftRadius: 4,
-            borderTopRightRadius: 4,
+
         }}>
-            {
-                dataSource.map(item => {
-                    return (
-                        <View style={{
-                            marginHorizontal: '10%',
-                            backgroundColor: 'white', marginVertical: 5,
-                            height: 30,
-                            justifyContent: 'center',
-                            borderRadius: 4,
-                        }}>
+
+            <View style={{
+
+                backgroundColor: '#84DCC6',
+                paddingTop: 10,
+                marginHorizontal: 20,
+                borderTopLeftRadius: 4,
+                borderTopRightRadius: 4,
+                flexWrap: 'wrap',
+
+                justifyContent: 'center',
+                alignItems: 'center',
+                alignContent: 'center'
+            }}>
+                {
+                    dataSource.length ?
+
+                        dataSource.map(item => {
+                            return (
+                                <View style={{
+                                    // marginHorizontal: '10%',
+                                    backgroundColor: 'white',
+                                    height: 30,
+                                    width: '90%',
+                                    marginBottom: 10,
+                                    justifyContent: 'center',
+                                    borderRadius: 4,
+                                }}>
+                                    <Text style={{
+                                        color: 'black',
+                                        paddingHorizontal: 10,
+                                    }}>{item}</Text>
+                                </View>
+                            )
+                        })
+
+                        :
+                        <View
+                            style={{
+                                alignSelf: 'center',
+                                // margin: 20,
+                                height: 100,
+                                width: '100%',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                alignContent: 'center'
+                            }}>
                             <Text style={{
-                                color: 'black', paddingHorizontal: 10,
-                            }}>{item}</Text>
+                                fontSize: 18,
+                                fontWeight: 'bold',
+                                color: 'white'
+                            }}>No search items matched</Text>
                         </View>
-                    )
-                })
-            }
+                }
+
+            </View>
         </View>
 
     )
