@@ -84,6 +84,7 @@ export default function App() {
       {
         searching &&
         <SearchDropDown
+          onPress={() => setSearching(false)}
           dataSource={filtered} />
       }
     </View>
