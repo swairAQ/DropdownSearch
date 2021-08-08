@@ -12,8 +12,7 @@ import {
 export default function SearchDropDown(props) {
     const { dataSource } = props
     return (
-        <TouchableOpacity
-            onPress={props.onPress}
+        <View
             style={styles.container}>
 
             <View style={styles.subContainer}>
@@ -22,9 +21,12 @@ export default function SearchDropDown(props) {
 
                         dataSource.map(item => {
                             return (
-                                <View style={styles.itemView}>
+                                <TouchableOpacity
+
+                                    onPress={() => props.onPress(item)}
+                                    style={styles.itemView}>
                                     <Text style={styles.itemText}>{item}</Text>
-                                </View>
+                                </TouchableOpacity>
                             )
                         })
 
@@ -36,7 +38,7 @@ export default function SearchDropDown(props) {
                 }
 
             </View>
-        </TouchableOpacity>
+        </View>
 
     )
 }
