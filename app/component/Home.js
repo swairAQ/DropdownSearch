@@ -22,11 +22,13 @@ export default function Home(props) {
   const [dataSource] = useState(['apple', 'banana', 'cow', 'dex', 'zee', 'orange', 'air', 'bottle'])
   const [colors] = useState(['#84DCC6', '#FEC8C8', '#F7E4CF', "#E8DEF3",
   ])
+  const [value, setValue] = useState("");
   const [filtered, setFiltered] = useState(dataSource)
   const [searching, setSearching] = useState(false)
   const onSearch = (text) => {
     if (text) {
       setSearching(true)
+      setValue(text)
       const temp = text.toLowerCase()
 
       const tempList = dataSource.filter(item => {
@@ -48,6 +50,7 @@ export default function Home(props) {
     <View style={styles.container}>
 
       <TextInput
+        value={value}
         style={styles.textInput}
         placeholder="Search"
         placeholderTextColor='white'
@@ -87,8 +90,9 @@ export default function Home(props) {
         searching &&
         <SearchDropDown
           onPress={(item) => {
-            setSearching(false)
-            props.navigation.navigate('Details', { item: item })
+            setValue(item)
+            // setSearching(false)
+            // props.navigation.navigate('Details', { item: item })
           }}
           dataSource={filtered} />
       }
